@@ -70,6 +70,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -964879241824487310}
   m_SourcePrefab: {fileID: 100100000, guid: 6802674b8e1fd754198f13be5e6127be, type: 3}
+--- !u!4 &1291110660591734725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6802674b8e1fd754198f13be5e6127be, type: 3}
+  m_PrefabInstance: {fileID: 1612371350573754414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1918853273397892479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6802674b8e1fd754198f13be5e6127be, type: 3}
@@ -130,4 +135,4 @@ MonoBehaviour:
     m_Bits: 256
   attackRate: 1
   projectilePrefab: {fileID: 6785342865338708688, guid: 12a0b3c27dbda954f9e2e5d67748f8e8, type: 3}
-  projectileSpawnpoint: {fileID: 2030865440727211259, guid: 22e8a3d8875e919419c7acab798abab7, type: 3}
+  projectileSpawnpoint: {fileID: 1291110660591734725}
