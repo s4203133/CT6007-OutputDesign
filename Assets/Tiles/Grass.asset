@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008c714c0e7d36147af33d19dd396419, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 2700080321482219112, guid: d9380103e1aabff48a74db81d71b671d, type: 3}
+  orientation: 0
+  weight: 20
+  northTiles:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
+  - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  southTiles:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
+  - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  eastTiles:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
+  - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  westTiles:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
+  - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  aboveTiles: []
+  belowTiles: []
+  startCollapsed: 0

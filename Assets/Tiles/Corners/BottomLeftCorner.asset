@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008c714c0e7d36147af33d19dd396419, type: 3}
+  m_Name: BottomLeftCorner
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 8686529276421247797, guid: e727dec182a32014fb5a54a74f4e42b3, type: 3}
+  orientation: 0
+  weight: 0
+  northTiles:
+  - {fileID: 11400000, guid: 033c280b0d047a84b898dad5fab55093, type: 2}
+  - {fileID: 11400000, guid: e96948b6ab54db848af56229b11153a1, type: 2}
+  - {fileID: 11400000, guid: a07dda6771320c446adfdbd0f0c76461, type: 2}
+  - {fileID: 11400000, guid: f16029aefffb5814495250ce581ecb45, type: 2}
+  - {fileID: 11400000, guid: ee75462de48a0154ea6d243083784f31, type: 2}
+  - {fileID: 11400000, guid: d7084776094ad51499b4f118a2957b09, type: 2}
+  southTiles:
+  - {fileID: 11400000, guid: 33ee16e4128edac41ad83aeb351f7021, type: 2}
+  eastTiles:
+  - {fileID: 11400000, guid: 9c3f839070bbec04dacb6447e18e9920, type: 2}
+  - {fileID: 11400000, guid: 0297d16b7d124114394ec61dfca00e52, type: 2}
+  - {fileID: 11400000, guid: 6b8292ef658f6414ebaad646d9a6b96a, type: 2}
+  - {fileID: 11400000, guid: 528d3e3a0d857144b8a588b68f64ef4a, type: 2}
+  - {fileID: 11400000, guid: b9a660f5b3b200841a20a8376f587411, type: 2}
+  - {fileID: 11400000, guid: 14d0a460e124c9c48bc83a145c99bec6, type: 2}
+  westTiles:
+  - {fileID: 11400000, guid: 33ee16e4128edac41ad83aeb351f7021, type: 2}
+  aboveTiles:
+  - {fileID: 11400000, guid: 445ec843a8e41c94a96abc543e25344b, type: 2}
+  - {fileID: 11400000, guid: 0d38be49a573d604ea6dbda1f23c9dfa, type: 2}
+  - {fileID: 11400000, guid: 25303a9429d6c2f4fa937b928d56870a, type: 2}
+  startCollapsed: 1

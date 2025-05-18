@@ -1,0 +1,29 @@
+{
+    "Create Castle": {
+        "checkpoints": [
+            {
+                "steps": 256403,
+                "file_path": "results\\TestingParams3\\Create Castle\\Create Castle-256403.onnx",
+                "reward": null,
+                "creation_time": 1747508047.6548557,
+                "auxillary_file_paths": [
+                    "results\\TestingParams3\\Create Castle\\Create Castle-256403.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 256403,
+            "file_path": "results\\TestingParams3\\Create Castle.onnx",
+            "reward": null,
+            "creation_time": 1747508047.6548557,
+            "auxillary_file_paths": [
+                "results\\TestingParams3\\Create Castle\\Create Castle-256403.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

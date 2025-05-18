@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008c714c0e7d36147af33d19dd396419, type: 3}
+  m_Name: Tower Body 2
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 2246835646083352051, guid: a17a9f0a0e81f504ca6748874d972acf, type: 3}
+  orientation: 0
+  weight: 1
+  northTiles: []
+  southTiles: []
+  eastTiles: []
+  westTiles: []
+  aboveTiles:
+  - {fileID: 11400000, guid: 7a47e5abf34ad2e4bb460f13f08e5d76, type: 2}
+  - {fileID: 11400000, guid: fcbe5884632aa4146929b3a33d611ddc, type: 2}
+  - {fileID: 11400000, guid: 07c812519ed028d4197b8d1194cc5f37, type: 2}
+  - {fileID: 11400000, guid: a874242a337ee4447af0a2a8c7da873a, type: 2}
+  - {fileID: 11400000, guid: efb7380a3b457f340a89e62f5b5d81e6, type: 2}
+  - {fileID: 11400000, guid: 02fe9175a2534fd469312c3c63717f6c, type: 2}
+  startCollapsed: 0

@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1747417208",
+        "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\LukeM\\Documents\\UOG\\_Level 6\\Semester 2\\CT6007\\CT6007-OutputDesign\\venv\\Scripts\\mlagents-learn --run-id=test3",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.2+cu121",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1747417242"
+    },
+    "total": 34.1602838000108,
+    "count": 1,
+    "self": 0.005088000034447759,
+    "children": {
+        "run_training.setup": {
+            "total": 0.0817852999898605,
+            "count": 1,
+            "self": 0.0817852999898605
+        },
+        "TrainerController.start_learning": {
+            "total": 34.073410499986494,
+            "count": 1,
+            "self": 0.0005760999920312315,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 34.07282189998659,
+                    "count": 1,
+                    "self": 34.07282189998659
+                },
+                "trainer_threads": {
+                    "total": 8.00006091594696e-07,
+                    "count": 1,
+                    "self": 8.00006091594696e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 1.170000177808106e-05,
+                    "count": 1,
+                    "self": 1.170000177808106e-05
+                }
+            }
+        }
+    }
+}
