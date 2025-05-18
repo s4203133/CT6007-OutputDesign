@@ -19,18 +19,21 @@ MonoBehaviour:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
   - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  - {fileID: 11400000, guid: 944ac4bf12496db49b88d323aae56352, type: 2}
   southTiles:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
   - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  - {fileID: 11400000, guid: 944ac4bf12496db49b88d323aae56352, type: 2}
   eastTiles:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
   - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  - {fileID: 11400000, guid: 944ac4bf12496db49b88d323aae56352, type: 2}
   westTiles:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 9c92bb6beef51d24f9295d1508882700, type: 2}
   - {fileID: 11400000, guid: f64d553db3412af4ab56e8a111408167, type: 2}
+  - {fileID: 11400000, guid: 944ac4bf12496db49b88d323aae56352, type: 2}
   aboveTiles: []
-  belowTiles: []
   startCollapsed: 0
