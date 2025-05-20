@@ -15,9 +15,10 @@ MonoBehaviour:
   tilePrefab: {fileID: 8154703718014113456, guid: 99eea57a0980fc547adb4e536d9b3bf3, type: 3}
   orientation: 0
   weight: 1
+  startCollapsed: 0
+  attackTile: 0
   northTiles: []
   southTiles: []
   eastTiles: []
   westTiles: []
   aboveTiles: []
-  startCollapsed: 0

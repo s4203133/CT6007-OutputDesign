@@ -6,7 +6,10 @@ public class Tile : ScriptableObject
 {
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private int orientation;
-    public int weight; 
+    public int weight;
+    [SerializeField] private bool startCollapsed;
+    [SerializeField] private bool attackTile;
+
 
     [Space(10)]
     [SerializeField] private List<Tile> northTiles;
@@ -19,8 +22,6 @@ public class Tile : ScriptableObject
     [Space(10)]
     [SerializeField] private List<Tile> aboveTiles;
 
-    [SerializeField] private bool startCollapsed;
-
     // Public Access
     public GameObject TilePrefab => tilePrefab;
     public int Orientation => orientation;
@@ -30,4 +31,5 @@ public class Tile : ScriptableObject
     public List<Tile> West => westTiles;
     public List<Tile> Above => aboveTiles;
     public bool StartCollapsed => startCollapsed;   
+    public bool AttackTile => attackTile;
 }

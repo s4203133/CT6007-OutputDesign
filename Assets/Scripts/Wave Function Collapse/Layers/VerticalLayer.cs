@@ -6,12 +6,13 @@ public class VerticalLayer : WaveFunctionCollapseLayer {
 
     public override void Initialise(TileGrid grid, WaveFunctionCollapse wfc) {
         this.grid = grid;
+        waveFunctionCollapse = wfc;
 
         verticalGrid = new VerticalGrid(grid.Tiles, grid.generator);
         verticalGrid.Generate();
 
-        wfc.MoveUpLayer();
-        wfc.SetGrid(verticalGrid.cells);
+        waveFunctionCollapse.MoveUpLayer();
+        waveFunctionCollapse.SetGrid(verticalGrid.cells);
         grid.SetGrid(verticalGrid.cells);
 
         WaveFunctionCollapse.OnCellCollapsed += AddCellToList;

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class WaveFunctionCollapse
@@ -10,15 +9,14 @@ public class WaveFunctionCollapse
     private TileGrid grid;
     private List<GameObject> tiles;
 
-    public bool completed;
-    public int iterations;
-
-    [Range(0f, 0.1f)]
-    public float speed;
-    private WaitForSeconds delay;
+    private bool completed;
 
     [SerializeField] private int maxHeight;
     private int height;
+
+    [Space(5)]
+    [SerializeField] private int attackSpendingPoints;
+    private int attackPoints;
 
     [SerializeField] private WaveFunctionCollapseLayer[] layers;
     private WaveFunctionCollapseLayer currentLayer;
@@ -30,10 +28,11 @@ public class WaveFunctionCollapse
     public void Initialise(TileGrid tileGrid) {
         grid = tileGrid;
         tiles = grid.Tiles;
-        delay = new WaitForSeconds(speed);
         height = 1;
         currentLayer = layers[0];
         currentLayer.Initialise(grid, this);
+        attackPoints = attackSpendingPoints;
+        Cell.OnAttackTileCreated += SpendAttackPoint;
     }
 
     public IEnumerator WFC() {
@@ -42,7 +41,7 @@ public class WaveFunctionCollapse
             CalculateEnthropy();
             Cell cell = GetCellWithLowestEnthropy();
             CollapseCell(cell);
-            iterations++;
+            currentLayer.AddIteration();
 
             if (currentLayer.Complete()) {
                 currentLayerIndex++;
@@ -124,4 +123,10 @@ public class WaveFunctionCollapse
     public void SetGrid(List<GameObject> newGrid) {
         tiles = newGrid;
     }
+
+    private void SpendAttackPoint() {
+        attackPoints--;
+    }
+
+    public bool SpentAllAttackPoints => attackPoints <= 0;
 }

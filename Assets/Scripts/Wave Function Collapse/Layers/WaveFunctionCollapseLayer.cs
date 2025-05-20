@@ -1,10 +1,12 @@
-using System.Collections.Generic;
+ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class WaveFunctionCollapseLayer : MonoBehaviour
 {
+    protected WaveFunctionCollapse waveFunctionCollapse;
     [SerializeField] private List<Tile> availableTiles;
     protected TileGrid grid;
+    protected int iterations = 0;
 
     public List<Tile> GetPossibleTiles(SurroundingTiles surroundingTiles) {
         List<Tile> returnTiles = new List<Tile>();
@@ -24,7 +26,9 @@ public abstract class WaveFunctionCollapseLayer : MonoBehaviour
         if (surroundingTiles.west != null) {
             GetPossibleTiles(WestTile(surroundingTiles).East, ref returnTiles);
         }
+
         CheckSurroundingTiles(surroundingTiles, ref returnTiles);
+
         return returnTiles;
     }
 
@@ -33,6 +37,11 @@ public abstract class WaveFunctionCollapseLayer : MonoBehaviour
             return;
         }
         for (int i = 0; i < targetTiles.Count; i++) {
+
+            if (waveFunctionCollapse.SpentAllAttackPoints) {
+                if (targetTiles[i].AttackTile) { continue; }
+            }
+
             if (!listAddingTo.Contains(targetTiles[i])) {
                 if (availableTiles.Contains(targetTiles[i])) {
                     listAddingTo.Add(targetTiles[i]);
@@ -47,12 +56,15 @@ public abstract class WaveFunctionCollapseLayer : MonoBehaviour
             if (NorthTile(surroundingTiles).South.Count > 0 && !NorthTile(surroundingTiles).South.Contains(tile) || 
                 SouthTile(surroundingTiles).North.Count > 0 && !SouthTile(surroundingTiles).North.Contains(tile) || 
                 WestTile(surroundingTiles).East.Count > 0 && !WestTile(surroundingTiles).East.Contains(tile) || 
-                EastTile(surroundingTiles).West.Count > 0 && !EastTile(surroundingTiles).West.Contains(tile) 
-                /*BelowTile(surroundingTiles).Above.Count > 0 && !BelowTile(surroundingTiles).Above.Contains(tile) */) {
+                EastTile(surroundingTiles).West.Count > 0 && !EastTile(surroundingTiles).West.Contains(tile)) {
                 listAddingTo.Remove(tile);
                 i--;
             }
         }
+    }
+
+    public void AddIteration() {
+        iterations++;
     }
 
     private Tile NorthTile(SurroundingTiles surroundingTiles) => surroundingTiles.north.GetTile();

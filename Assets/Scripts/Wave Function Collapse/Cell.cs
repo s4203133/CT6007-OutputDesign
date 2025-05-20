@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class Cell : MonoBehaviour
 
     public bool perimeterTile;
 
+    public static Action OnAttackTileCreated;
+
     public void Init() {
         surroundingTiles = new SurroundingTiles();
         enthropy = TileMenu.NumberOfTiles;
@@ -33,6 +36,9 @@ public class Cell : MonoBehaviour
             Destroy(currentTile);
         }
         currentTile = Instantiate(targetTile.TilePrefab, transform.position, Quaternion.Euler(0, tile.Orientation, 0), this.transform);
+        if (tile.AttackTile) {
+            OnAttackTileCreated?.Invoke();
+        }
     }
 
     public Tile GetTile() {
@@ -41,7 +47,6 @@ public class Cell : MonoBehaviour
 
     public void SetRadomTile() {
         if(possibleTiles == null || enthropy == 0) {
-            Debug.Log("Spawn Neutral", gameObject);
             Collapse();
             SetTile(TileMenu.Neutral);
             return;
@@ -58,12 +63,12 @@ public class Cell : MonoBehaviour
             index += possibleTiles[i].weight;
         }
 
-        int choice = Random.Range(0, index);
+        int choice = UnityEngine.Random.Range(0, index);
         int currentTile = 0;
         int currentWeight = 0;
         currentWeight = possibleTiles[0].weight;
         for (int i = 0; i <= choice; i++) {
-            if(i ==  choice) {
+            if(i == choice) {
                 tile = possibleTiles[currentTile];
                 break;
             }
@@ -86,7 +91,6 @@ public class Cell : MonoBehaviour
     }
 
     public void SetPossibilities(List<Tile> possibilities) {
-        //possibleTiles = possibilities;
         if (possibleTiles != null) {
             enthropy = possibilities.Count;
             possibleTiles = possibilities;

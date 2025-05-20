@@ -59,12 +59,14 @@ public class TileGrid {
         int[] surroundingTiles = new int[8];
         int numOfSurroundingTiles = 0;
         int index = 0;
+        // Check all 8 adjecent cells
         for (int i = 1; i >= -1; i--) {
             for (int j = -1; j <= 1; j++) {
+                // If both i and j are 0 then this is the centre cell, so don't check this one
                 if (i == 0 && j == 0) {
                     continue;
                 }
-                // check if the adjacent cells are empty (using i & j as the position offset)
+                // Check if the adjacent cells are empty (using i & j as the position offset)
                 if (CellEmpty(position, j, i)) {
                     surroundingTiles[index] = 0;
 
@@ -75,6 +77,7 @@ public class TileGrid {
                 index++;
             }
         }
+        // Determine where a tile is on the grid and get the correct type of tile based on what the adjacent cells are
         GameObject newTile = tileGenerator.GetTile(position, numOfSurroundingTiles, surroundingTiles);
         allTiles.Add(newTile.gameObject);
         return newTile;
