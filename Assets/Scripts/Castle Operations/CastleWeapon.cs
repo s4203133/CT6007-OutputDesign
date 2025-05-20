@@ -10,14 +10,13 @@ public class CastleWeapon : MonoBehaviour
     [Space(10)]
     [SerializeField] private CannonBall projectilePrefab;
     [SerializeField] private Transform projectileSpawnpoint;
+    [SerializeField] private Transform firingObject;
     private Transform target;
 
     private Transform thisTransform;
-    private Animator animator;
 
     private void Start() {
         thisTransform = transform;
-        //animator = GetComponent<Animator>();
         timer = 0;
     }
 
@@ -33,6 +32,10 @@ public class CastleWeapon : MonoBehaviour
     }
 
     private void HandleAttack() {
+        if (target != null) {
+            Vector3 lookPosition = new Vector3(target.transform.position.x, firingObject.position.y, target.transform.position.z);
+            firingObject.LookAt(lookPosition);
+        }
         Countdown();
     }
 
@@ -40,12 +43,10 @@ public class CastleWeapon : MonoBehaviour
         GameObject bestTarget = null;
         float minDistance = range;
         for(int i = 0; i < targets.Length; i++) {
-            if (Vector3.Dot((targets[i].transform.position - thisTransform.position), thisTransform.forward) > 0.1f) {
-                float distance = Vector3.Distance(targets[i].transform.position, thisTransform.position);
-                if (distance < minDistance) {
-                    bestTarget = targets[i].gameObject;
-                    minDistance = distance;
-                }
+            float distance = Vector3.Distance(targets[i].transform.position, thisTransform.position);
+            if (distance < minDistance) {
+                bestTarget = targets[i].gameObject;
+                minDistance = distance;
             }
         }
         return bestTarget;
@@ -61,7 +62,6 @@ public class CastleWeapon : MonoBehaviour
     }
 
     private void Fire() {
-        //animator.SetTrigger("Attack");
         CannonBall projectile = Instantiate(projectilePrefab, projectileSpawnpoint.position, thisTransform.rotation);
         projectile.SetTarget(target, this.gameObject);
     }

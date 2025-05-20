@@ -22,10 +22,10 @@ public class BinarySpacePartitioning
 
     public void CreateFloorMap() {
         rootNode = new Node(null, Vector2.zero, castleData.width, castleData.length);
-        DoAThing();
+        BuildRooms();
     }
 
-    private void DoAThing() {
+    private void BuildRooms() {
         Queue<Node> rooms = new Queue<Node>();
         rooms.Enqueue(rootNode);
 
@@ -71,8 +71,6 @@ public class BinarySpacePartitioning
         GameObject roomVisuals = GameObject.Instantiate(roomPrefab, new Vector3(room.position.x, 0, room.position.y), Quaternion.identity);
         roomVisuals.transform.localScale = new Vector3(room.width, 1, room.length);
         roomVisuals.name = name;
-        //roomVisuals.GetComponentInChildren<MeshRenderer>().material.color = Random.ColorHSV();
-        //roomVisuals.GetComponent<Room>().Init(room.position, room.width, room.length);
     }
 
     private NewRoomPair DivideRoom(Node room) {

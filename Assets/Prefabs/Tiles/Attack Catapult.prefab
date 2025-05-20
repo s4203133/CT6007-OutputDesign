@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: -5305218787223666861, guid: 504b8c97f0635394d88cd0b8e5499dbe, type: 3}
     - target: {fileID: 9057933587381920472, guid: 22e8a3d8875e919419c7acab798abab7, type: 3}
       propertyPath: range
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9057933587381920472, guid: 22e8a3d8875e919419c7acab798abab7, type: 3}
       propertyPath: attackRate
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9057933587381920472, guid: 22e8a3d8875e919419c7acab798abab7, type: 3}
       propertyPath: projectilePrefab

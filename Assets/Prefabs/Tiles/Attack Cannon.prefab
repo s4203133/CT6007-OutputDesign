@@ -122,9 +122,10 @@ MonoBehaviour:
   detectableLayers:
     serializedVersion: 2
     m_Bits: 256
-  attackRate: 2
+  attackRate: 1.5
   projectilePrefab: {fileID: 6785342865338708688, guid: 023160237d0149f438751967b5706f57, type: 3}
   projectileSpawnpoint: {fileID: 4218713131952456587}
+  firingObject: {fileID: 2845595889128798671}
 --- !u!135 &-3616478790053726488
 SphereCollider:
   m_ObjectHideFlags: 0

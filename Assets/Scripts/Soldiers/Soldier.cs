@@ -90,4 +90,10 @@ public class Soldier : MonoBehaviour
         movement.SetTarget(GameObject.FindGameObjectWithTag("Target").transform);
         movement.Continue();
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position + (transform.forward * 2), 2.5f);
+    }
 }
