@@ -100,7 +100,7 @@ public class PCGAgent : Agent
     }
 
     private void KilledSoldier(GameObject soldier) {
-        SetReward(+1f);
+        SetReward(+3f);
     }
 
     private void TileDestroyed(GameObject attacker) {
@@ -115,22 +115,22 @@ public class PCGAgent : Agent
         }
 
         if (soldier != null) {
-            SetReward(-1f);
+            SetReward(-3f);
         }
     }
 
     private void SoldierEnteredCastle() {
-        SetReward(-1f);
+        SetReward(-3f);
     }
 
     private void Success() {
-        SetReward(+1f);
+        SetReward(+15f);
         EndEpisode();
         SceneManager.LoadScene(0);
     }
 
     private void Failure() {
-        SetReward(-1f);
+        SetReward(-3f);
         EndEpisode();
         SceneManager.LoadScene(0);
     }
