@@ -11,5 +11,7 @@ The Unity ML Agents package has been imported into the project to set up the mac
 
 References -
 Kenney (2024a) Castle Kit · Kenney, · Kenney. Available at: https://kenney.nl/assets/castle-kit (Accessed: 22 May 2025). 
+
 Kenney (2024b) Mini Arena · Kenney, · Kenney. Available at: https://kenney.nl/assets/mini-arena (Accessed: 22 May 2025). 
+
 Kenney (2024c) Tower defense kit · Kenney, · Kenney. Available at: https://kenney.nl/assets/tower-defense-kit (Accessed: 22 May 2025). 
