@@ -11,7 +11,7 @@ The Unity ML Agents package has been imported into the project to set up the mac
 
 In order for the machine learning agent to work, a version of python between 3.10.0 and 3.10.11 will need to be installed, and a virtual environment will need to be set up through the command prompt. The project by default however comes with the base statistics for the tiles and algorithm for the training to begin taking place.
 
-References (3D Models) -
+**References (3D Models) -**
 
 Kenney (2024a) Castle Kit · Kenney, · Kenney. Available at: https://kenney.nl/assets/castle-kit (Accessed: 22 May 2025). 
 
