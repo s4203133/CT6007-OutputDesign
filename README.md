@@ -1,3 +1,5 @@
+# CT6007 - ASSESSMENT 2 - OUTPUT DESIGN
+
 This Project serves as the practical implementation for the research conducted in the paper "An Exploration Into Advancing Wave Function Collapse Through Machine Learning Strategies".
 
 In the sample scene, a castle generator runs a series of algorithms to form a structure made out of a variety of different castle tiles. It begins with binary space partitioning, where randomly sized rooms are generated on a plane, and the centre is carved out to represent the floor plan of the castle. Each cell is then evaluated to test whether it is an empty cell (outside of the castle so not part of it), a perimeter cell, or an interior cell.
