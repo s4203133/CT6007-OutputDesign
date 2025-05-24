@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class CastleInterior : CastleTiles {
 
     public static Action<GameObject> OnInteriorTileCreated;

@@ -52,12 +52,6 @@ public class SoldierSpawner : MonoBehaviour
                 break;
             }
         }
-
-/*        for (int i = -5; i < 5; i++) {
-            for (int j = 0; i < 10; j++) {
-                soldiers.Add(Instantiate(soldierPrefab, new Vector3(i, 1, -20), Quaternion.identity));
-            }
-        }*/
     }
 
     private void DisableAllSoldiers() {

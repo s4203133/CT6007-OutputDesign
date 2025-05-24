@@ -10,7 +10,6 @@ public class Tile : ScriptableObject
     [SerializeField] private bool startCollapsed;
     [SerializeField] private bool attackTile;
 
-
     [Space(10)]
     [SerializeField] private List<Tile> northTiles;
     [SerializeField] private List<Tile> southTiles;

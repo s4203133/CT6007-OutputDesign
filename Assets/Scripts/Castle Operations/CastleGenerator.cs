@@ -17,46 +17,31 @@ public class CastleGenerator : MonoBehaviour
     [SerializeField] private TileMenu tileMenu;
 
     private void Start() {
-        tileMenu.Initialise();
+        GenerateMap();
+    }
 
+    public void GenerateMap() {
+        GenerateFloorMap();
+        Invoke("GenerateTiles", 0.1f);
+        Invoke("StartWFC", 0.1f);
+    }
+
+    private void GenerateFloorMap() {
+        // Initialise data before creating the floor map for the castle to be placed upon
+        tileMenu.Initialise();
         binarySpaceParitioning.Initialise(castleData);
         tileGrid.Initialise(castleData);
 
         binarySpaceParitioning.CreateFloorMap();
-        Invoke("GenerateTiles", 0.1f);
-
-        waveFunctionCollapse.Initialise(tileGrid);
-        Invoke("StartWFC", 0.1f);
-    }
-
-    public void GenerateMap() {
-        if (Application.isPlaying) {
-            ClearConsole();
-            binarySpaceParitioning.ClearMap();
-            binarySpaceParitioning.CreateFloorMap();
-            tileGrid.ClearGrid();
-            Invoke("GenerateTiles", 0.1f);
-            waveFunctionCollapse.Initialise(tileGrid);
-            Invoke("StartWFC", 0.1f);
-        }
-        else {
-            Debug.LogWarning("Please Enter Play mode before calling this function.");
-        }
     }
 
     private void GenerateTiles() {
         tileGrid.Generate();
+        waveFunctionCollapse.Initialise(tileGrid);
     }
 
     private void StartWFC() {
         StartCoroutine(waveFunctionCollapse.WFC());
-    }
-
-    public void ClearConsole() {
-        Assembly assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
-        Type type = assembly.GetType("UnityEditor.LogEntries");
-        MethodInfo methodInfo = type.GetMethod("Clear");
-        methodInfo.Invoke(new object(), null);
     }
 }
 

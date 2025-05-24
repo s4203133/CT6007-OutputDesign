@@ -17,35 +17,21 @@ public class TileStats : MonoBehaviour
     [Header("STRONG WALLS")]
     [SerializeField] private Tile[] strongWalls;
 
-    private void AdjustWeights(ref Tile[] tiles, int amount, int amount2, int amount3, int amount4) {
-        tiles[0].weight = amount;
-        tiles[1].weight = amount2;
-        tiles[2].weight = amount3;
-        tiles[3].weight = amount4;
+    private void AdjustWeights(ref Tile[] tiles, int[] amounts) {
+        // Set the weights to the values passed in
+        tiles[0].weight = amounts[0];
+        tiles[1].weight = amounts[1];
+        tiles[2].weight = amounts[2];
+        tiles[3].weight = amounts[3];
     }
 
-    public void AdjustDoorwayWeights(int amount,
-                                     int amount2,
-                                     int amount3,
-                                     int amount4) => AdjustWeights(ref doors, amount, amount2, amount3, amount4);
+    public void AdjustDoorwayWeights(int[] amounts) => AdjustWeights(ref doors, amounts);
 
-    public void AdjustCannonWeights(int amount,
-                                    int amount2,
-                                    int amount3,
-                                    int amount4) => AdjustWeights(ref cannons, amount, amount2, amount3, amount4);
+    public void AdjustCannonWeights(int[] amounts) => AdjustWeights(ref cannons, amounts);
 
-    public void AdjustCatapultWeights(int amount,
-                                      int amount2,
-                                      int amount3,
-                                      int amount4) => AdjustWeights(ref catapults, amount, amount2, amount3, amount4);
+    public void AdjustCatapultWeights(int[] amounts) => AdjustWeights(ref catapults, amounts);
 
-    public void AdjustCrossbowWeights(int amount,
-                                      int amount2,
-                                      int amount3,
-                                      int amount4) => AdjustWeights(ref crossbows, amount, amount2, amount3, amount4);
+    public void AdjustCrossbowWeights(int[] amounts) => AdjustWeights(ref crossbows, amounts);
 
-    public void AdjustStrongWallWeights(int amount,
-                                        int amount2,
-                                        int amount3,
-                                        int amount4) => AdjustWeights(ref strongWalls, amount, amount2, amount3, amount4);
+    public void AdjustStrongWallWeights(int[] amounts) => AdjustWeights(ref strongWalls, amounts);
 }

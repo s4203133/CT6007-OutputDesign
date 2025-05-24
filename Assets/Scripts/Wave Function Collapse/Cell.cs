@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private Tile tile;
-    public int cellIndex;
-    public bool collapsed { get; private set; }
-    [SerializeField] private int enthropy;
+    public bool debugThisTile;
 
-    [SerializeField] private List<Tile> possibleTiles;
+    private Tile tile;
+    public int cellIndex;
+    private int enthropy;
+    public bool collapsed { get; private set; }
+
+    private List<Tile> possibleTiles;
 
     [Space(8)]
     public SurroundingTiles surroundingTiles;
 
     private GameObject currentTile;
 
-    public bool perimeterTile;
+    [HideInInspector] public bool perimeterTile;
 
     public static Action OnAttackTileCreated;
 
@@ -31,11 +33,14 @@ public class Cell : MonoBehaviour
 
     public void SetTile(Tile targetTile) {
         tile = targetTile;
+        // If a tile alreayd exists, destroy it
         if (currentTile != null)
         {
             Destroy(currentTile);
         }
         currentTile = Instantiate(targetTile.TilePrefab, transform.position, Quaternion.Euler(0, tile.Orientation, 0), this.transform);
+
+        // Register if an attack tile was created
         if (tile.AttackTile) {
             OnAttackTileCreated?.Invoke();
         }
@@ -46,32 +51,38 @@ public class Cell : MonoBehaviour
     }
 
     public void SetRadomTile() {
-        if(possibleTiles == null || enthropy == 0) {
+        // If there are no possible tiles, collapse this cell will a neutral tile
+        if (possibleTiles == null || enthropy == 0) {
             Collapse();
             SetTile(TileMenu.Neutral);
             return;
         }
-        if(enthropy == 1) {
+        // If there is only one possible tile, collapse this cell with it
+        if (enthropy == 1) {
             Collapse();
             SetTile(possibleTiles[0]);
             return;
         }
 
+        // Add up all the weights of the possible tiles this cell can be collapsed as
         Tile tile = null;
         int index = 0;
         for (int i = 0; i < possibleTiles.Count; i++) {
             index += possibleTiles[i].weight;
         }
 
+        // Genarate a random number for choosing a tile
         int choice = UnityEngine.Random.Range(0, index);
         int currentTile = 0;
         int currentWeight = 0;
         currentWeight = possibleTiles[0].weight;
+        // Increment 'i' until it reaches the random number
         for (int i = 0; i <= choice; i++) {
             if(i == choice) {
                 tile = possibleTiles[currentTile];
                 break;
             }
+            // If 'i' has surpassed the wieght of the current tile, move onto the next tile and update the current weight
             if (i > currentWeight) {
                 currentTile++;
                 currentWeight += possibleTiles[currentTile].weight;
@@ -91,10 +102,12 @@ public class Cell : MonoBehaviour
     }
 
     public void SetPossibilities(List<Tile> possibilities) {
-        if (possibleTiles != null) {
+        // If this cell has possible tiles, set the enthropy and possible tiles list
+        if (possibilities != null) {
             enthropy = possibilities.Count;
             possibleTiles = possibilities;
         }
+        // If there are no possible tiles, set the enthropy to 0
         else {
             enthropy = 0;
         }
@@ -105,7 +118,7 @@ public class Cell : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class SurroundingTiles {
     public Cell north;
     public Cell east;

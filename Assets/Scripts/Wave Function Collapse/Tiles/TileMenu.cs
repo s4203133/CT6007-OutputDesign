@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// A set of standard tiles that may be useful for other scripts to instantiate
+/// </summary>
+/// 
+
 [CreateAssetMenu(menuName = "Create Tile Menu", fileName = "Tile Menu")]
 public class TileMenu : ScriptableObject
 {
@@ -12,16 +17,9 @@ public class TileMenu : ScriptableObject
     [SerializeField] private int numberOfTiles;
 
     [Space(15)]
-    [Header("TILES")]
+    [Header("STANDARD TILES")]
     [SerializeField] private Tile empty;
     [SerializeField] private Tile neutralTower;
-
-    [Space(15)]
-    [Header("EDGES")]
-    [SerializeField] private Tile leftEdge;
-    [SerializeField] private Tile rightEdge;
-    [SerializeField] private Tile topEdge;
-    [SerializeField] private Tile bottomEdge;
 
     [Space(15)]
     [Header("CORNERS")]
@@ -55,11 +53,6 @@ public class TileMenu : ScriptableObject
 
     public static Tile Empty => instance.empty;
     public static Tile Neutral => instance.neutralTower;
-
-    public static Tile LeftEdge => instance.leftEdge;
-    public static Tile RightEdge => instance.rightEdge;
-    public static Tile TopEdge => instance.topEdge;
-    public static Tile BottomEdge => instance.bottomEdge;
 
     public static Tile TopLeftCorner => instance.topLeftCorner;
     public static Tile TopRightCorner => instance.topRightCorner;

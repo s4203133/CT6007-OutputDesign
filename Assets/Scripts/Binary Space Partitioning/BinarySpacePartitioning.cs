@@ -17,7 +17,7 @@ public class BinarySpacePartitioning
     public void Initialise(CastleData data) {
         castleData = data;
         castleRooms = new List<Node>();
-        floorRemover.Init();
+        floorRemover.Initialise();
     }
 
     public void CreateFloorMap() {
@@ -30,9 +30,11 @@ public class BinarySpacePartitioning
         rooms.Enqueue(rootNode);
 
         int iteration = 0;
+        // Divide the space into rooms until the max iteration has been reached or no more rooms can be created
         while(iteration < maxIterations || rooms.Count > 0) {
             Node currentRoom = rooms.Dequeue();
             if (RoomIsLargeEnoughToDivide(currentRoom)) { 
+                // Divide the current room on the stack, and push the 2 resulting rooms onto the stack
                 NewRoomPair newRooms = DivideRoom(currentRoom);
                 rooms.Enqueue(newRooms.room1);
                 rooms.Enqueue(newRooms.room2);
@@ -50,6 +52,7 @@ public class BinarySpacePartitioning
     }
 
     private void GetFinalRooms() {
+        // Remove all parent rooms of children to result in all of the divided up spaces with no overlapping rooms in the same spaces
         int count = castleRooms.Count;
         for(int i = 0; i < count; i++) {
             if (castleRooms[i].children.Count > 0) {
@@ -61,6 +64,7 @@ public class BinarySpacePartitioning
     }
 
     private void CreateRooms() {
+        // Spawn a plane prefab to represent the room
         int count = castleRooms.Count;
         for(int i = 0; i < count; i++) { 
             InstantiateRoom("Room " + i, castleRooms[i]);
@@ -74,6 +78,7 @@ public class BinarySpacePartitioning
     }
 
     private NewRoomPair DivideRoom(Node room) {
+        // Determine what type of room can be made based on the size of the room
         bool canCreateHorizontalRoom = room.width > castleData.minRoomWidth;
         bool canCreateVerticalRoom = room.length > castleData.minRoomLength;
 
@@ -85,7 +90,7 @@ public class BinarySpacePartitioning
             return RoomDivider.CreateVerticalRooms(room, castleData);
         }
         else {
-            Debug.Log("Room could not be divided - ERROR!");
+            Debug.LogError("Room could not be divided - ERROR!");
             return new NewRoomPair();
         }
     }
@@ -95,6 +100,7 @@ public class BinarySpacePartitioning
     }
 
     public void ClearMap() {
+        // Remove all rooms and clear the list
         Room[] rooms = GameObject.FindObjectsOfType<Room>();
         for (int i = 0; i < rooms.Length; i++) {
             GameObject.Destroy(rooms[i].gameObject);

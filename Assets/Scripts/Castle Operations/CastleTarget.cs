@@ -25,12 +25,14 @@ public class CastleTarget : MonoBehaviour
     }
 
     private void SimulationSucceeded() {
+        // Show the victory screen and broadcast the success event
         successUI.SetActive(true);
         OnSimulationEnded?.Invoke();
         OnSuccess?.Invoke();
     }
 
     private void SimulationFailed() {
+        // Show the defeat screen and broadcast the fail event
         failUI.SetActive(true);
         OnSimulationEnded?.Invoke();
         OnFail?.Invoke();

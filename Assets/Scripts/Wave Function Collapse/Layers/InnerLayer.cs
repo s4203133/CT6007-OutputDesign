@@ -8,6 +8,7 @@ public class InnerLayer : WaveFunctionCollapseLayer
     }
 
     public override bool Complete() {
+        // Once all cells marked as 'interior' have been collapsed, this layer is finished
         return grid.AllInteriorCellsCollapsed();
     }
 

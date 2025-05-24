@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 3033456641304396861, guid: 22e8a3d8875e919419c7acab798abab7, type: 3}
   orientation: 180
-  weight: 5
+  weight: 10
   startCollapsed: 0
   attackTile: 1
   northTiles:

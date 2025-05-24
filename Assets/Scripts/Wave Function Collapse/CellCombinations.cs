@@ -24,6 +24,13 @@ public class CellCombinations {
     public int[] SingleEndBottom { get; private set; }
 
     public CellCombinations(int args) {
+        // Different combinations to represent where on the grid a tile is
+
+        // Matrix Grid for reference:
+        //        0   1   2
+        //        3   -   4
+        //        5   6   7
+
         TopLeft = new int[2] { 1, 3 };
         Top =  1;
         TopRight = new int[2] { 1, 4 };
@@ -50,26 +57,31 @@ public class CellCombinations {
         SingleEndRight = new int[3] { 1, 4, 6, };
         SingleEndLeft = new int[3] { 1, 3, 6, };
         SingleEndBottom = new int[3] { 3, 4, 6, };
-
     }
 
     private bool SurroundingTilesMatch(int[] surroundingTiles, int targetTile) {
+        // If any of the target id's is 0, then this combination has failed
         if (surroundingTiles[targetTile] == 0) {
             return false;
         }
+        // Otherwise, this is the correct combination
         return true;
     }
 
     private bool SurroundingTilesMatch(int[] surroundingTiles, int[] targetTiles) {
+        // For each entry in the provided combination array
         for (int value = 0; value < targetTiles.Length; value++) {
+            // If the corresponding index in surrounding tiles value is 0, then this isn't the correct combination
             if (surroundingTiles[targetTiles[value]] == 0) {
                 return false;
             }
         }
+        // If all indexes in the surrounding tiles matched the combination, then this is the correct combination
         return true;
     }
 
     public Tile GetCorrectTile(int[] surroundingTiles) {
+        // Calculate the correct type of tile based on the how many cells are surrounding the current cell
         Tile returnTile = CheckForSingularEnds(surroundingTiles);
         if(returnTile == null) {
             returnTile = CheckForSingularTiles(surroundingTiles);
@@ -86,6 +98,7 @@ public class CellCombinations {
     }
 
     private Tile CheckForSingularEnds(int[] tiles) {
+        // Check if this the end piece of a singular strip of edges
         if (SurroundingTilesMatch(tiles, SingleEndTop)) {
             return TileMenu.SingleEndTop;
         }
@@ -102,6 +115,7 @@ public class CellCombinations {
     }
 
     private Tile CheckForSingularTiles(int[] tiles) {
+        // Check if this the wall piece of a singular strip of edges
         if (SurroundingTilesMatch(tiles, SingleTop)) {
             return TileMenu.SingleTop;
         }
@@ -118,6 +132,7 @@ public class CellCombinations {
     }
 
     private Tile CheckForCorners(int[] tiles) {
+        // Check if this an outer corner of the castle wall
         if (SurroundingTilesMatch(tiles, TopLeft)) {
             return TileMenu.TopLeftCorner;
         }
@@ -134,6 +149,7 @@ public class CellCombinations {
     }
 
     private Tile CheckForEdges(int[] tiles) {
+        // Check if this a standard wall piece of the castle wall
         if (SurroundingTilesMatch(tiles, Left)) {
             return TileMenu.Empty;
         }
@@ -150,6 +166,7 @@ public class CellCombinations {
     }
 
     private Tile CheckForInnerCorners(int[] tiles) {
+        // Check if this an interior corner piece of the castle wall
         if (SurroundingTilesMatch(tiles, TopLeftInner)) {
             return TileMenu.TopLeftInner;
         }

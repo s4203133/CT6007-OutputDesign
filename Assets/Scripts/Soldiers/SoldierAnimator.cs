@@ -18,6 +18,7 @@ public class SoldierAnimator : MonoBehaviour
     }
 
     private void StartRun() {
+        // Stop idle animation and play running
         if (animator != null) {
             animator.SetBool("Run 0", true);
             animator.SetBool("Stop 0", false);
@@ -25,6 +26,7 @@ public class SoldierAnimator : MonoBehaviour
     }
 
     private void StopRun() {
+        // Stop running animation and play idle
         if (animator != null) {
             animator.SetBool("Run 0", false);
             animator.SetBool("Stop 0", true);

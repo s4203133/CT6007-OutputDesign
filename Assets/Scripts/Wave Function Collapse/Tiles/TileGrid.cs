@@ -11,10 +11,8 @@ public class TileGrid {
     [SerializeField] private TileGenerator tileGenerator;
     public TileGenerator generator => tileGenerator;
 
-    //private List<GameObject> allTiles;
-    public List<GameObject> Tiles => allTiles;
-
     private List<GameObject> allTiles;
+    public List<GameObject> Tiles => allTiles;
 
     private CastlePerimeter castlePerimeter;
     private CastleInterior castleInterior;
@@ -33,21 +31,26 @@ public class TileGrid {
     }
 
     public void Generate() {
+        // Using negattive to positive castle width and height so that the centre of the castle is placed at the centre of the world
+        // (Rather than the bottom left corner of the castle being placed at the centre)
         int halfCastleWidth = (int)(castleData.width * 0.5f);
         int halfCastleLength = (int)(castleData.length * 0.5f);
         int index = 0;
 
         for(int i = -halfCastleWidth; i < halfCastleWidth; i++) {
             for(int j = -halfCastleLength; j < halfCastleLength; j++) {
+                // Create a new tile at the correct position
                 GameObject newCell = null;
                 Vector3 tilePosition = new Vector3(i + 0.5f, 0, j + 0.5f);
+                // If there is no floor from the BSP algorithm at this location, then this cell part of the castle
                 if (CellEmpty(tilePosition)) {
                     newCell = CreateCell(tilePosition, 0);
                 }
+                // If there is floor from the BSP algorithm at this location, then this cell isn't part of the castle 
                 else {
-                    newCell = CreateNullCell(tilePosition, 0);
+                    newCell = CreateNullCell(tilePosition);
                 }
-
+                // Provide the cell with an index id
                 newCell.GetComponent<Cell>().SetIndex(index);
                 index++;
             }
@@ -84,6 +87,7 @@ public class TileGrid {
     }
 
     private bool CellEmpty(Vector3 tilePosition) {
+        // If there is ground from the BSP algorithm at this location, then this is not an empty space to place a castle cell
         if (Physics.Raycast(tilePosition + (Vector3.up * 5), Vector3.down, 10, castleGround)) {
             return false;
         }
@@ -91,23 +95,15 @@ public class TileGrid {
     }
 
     private bool CellEmpty(Vector3 tilePosition, int xOffset, int yOffset) {
+        // If there is ground from the BSP algorithm at this location, then this is not an empty space to place a castle cell
         if (Physics.Raycast(tilePosition + new Vector3(xOffset, 5, yOffset), Vector3.down, 10, castleGround)) {
             return false;
         }
         return true;
     }
 
-    public void ClearGrid() {
-        int length = allTiles.Count;
-        for(int i = 0; i < length; i++) {
-            GameObject.Destroy(allTiles[i]);
-        }
-        tilePlacements.Clear();
-        castlePerimeter = new CastlePerimeter();
-        castleInterior = new CastleInterior();
-    }
-
-    private GameObject CreateNullCell(Vector3 position, int height) {
+    private GameObject CreateNullCell(Vector3 position) {
+        // Create a blank cell (to be used for any cell that isn't part of the castle)
         GameObject newNullCell = tileGenerator.GetNullTile(position);
         allTiles.Add(newNullCell);
         return newNullCell;
@@ -115,9 +111,11 @@ public class TileGrid {
 
     public SurroundingTiles GetSurroundingTiles(int index) {
         SurroundingTiles returnTiles = new SurroundingTiles();
+        // If the cell is on the edges of the whole map, don't check for surrounding tiles
         if(index < 31 || index % 30 == 0 || (index + 1) % 30 == 0 || index > 870) {
             return returnTiles;
         }
+        // Get each cell that is directly next to this one
         returnTiles.north = allTiles[index + 1].GetComponent<Cell>();
         returnTiles.east = allTiles[index + castleData.width].GetComponent<Cell>();
         returnTiles.south = allTiles[index - 1].GetComponent<Cell>();
